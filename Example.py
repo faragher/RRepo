@@ -12,11 +12,11 @@ identity = RNS.Identity()
  
 D = RRepo.FirmwareDownloader(destination_hexhash)
 D.Connect()
-print(D.ListBoards("Undefined"))
+print(D.ListBoards("lora32v21"))
 print(D.ListVersions("1.70"))
 print(D.ListLatest())
 
-FW = D.RequestFirmware("1.70/rnode_firmware_lora32v21.zip")
+FW = D.RequestFirmware("1.70/lora32v21")
 if FW.valid:
   Firmware = FW.FW
   if D.VerifyFirmware(FW):
