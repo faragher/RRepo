@@ -46,9 +46,9 @@ class Repository:
     os.makedirs(self.apppath+"/storage",exist_ok=True) # Fails gracefully
     if os.path.exists(identitypath):
       self.server_identity = RNS.Identity.from_file(identitypath)
-      print("Loading identity")
+      RNS.log("Loading identity")
     else:
-      print("Making new identity")
+      RNS.log("Making new identity")
       self.server_identity = RNS.Identity()
       self.server_identity.to_file(identitypath)
     
@@ -101,26 +101,6 @@ class Repository:
         RNS.log("Sent announce from "+RNS.prettyhexrep(destination.hash))
       #Timeout/announce error <= 4 sec. Tradeoff for reducing cycles
       time.sleep(5) 
-
-  def Index(self, version = None, board = None):
-    global Boards, Versions, Latest
-    if version:
-      if not version or not version in Versions:
-        print("Version "+str(version)+" is not available")
-        return
-      #print("Version "+str(version))
-      for b in Versions[version]:
-        print(Versions[version][b].board)
-    elif board:
-      if not board in Boards:
-        print("Board "+str(board)+" is not available")
-        return
-      #print("Board "+str(board))
-      for v in Boards[board]:
-        print(Boards[board][v].version)
-    else:
-      for l in Latest:
-        print(Latest[l].board+" V"+Latest[l].version)
         
   def ListBoards(path,command,data,link_id,remote_identity,requested_at):
     global Boards, Versions, Latest
@@ -139,7 +119,7 @@ class Repository:
   def ListLatest(path,command,data,link_id,remote_identity,requested_at):
     global Boards, Versions, Latest
     payload = []
-    print(Latest)
+    #print(Latest)
     for l in Latest:
       payload.append(l)
     return msgpack.packb(payload)
@@ -341,7 +321,7 @@ class FirmwareDownloader:
       
   def LinkEstablished(self, link):
     self.link_established = True
-    print("Link established")
+    RNS.log("Link established")
 
     
   def RequestFailed(self,receipt):
