@@ -42,7 +42,7 @@ class Repository:
       
     self.repopath = os.path.join(self.apppath,"firmware")
     identitypath = self.apppath+"/storage/identity"
-    os.makedirs(self.apppath+"/Firmware/Latest",exist_ok=True) # Fails gracefully
+    os.makedirs(self.apppath+"/firmware/Latest",exist_ok=True) # Fails gracefully
     os.makedirs(self.apppath+"/storage",exist_ok=True) # Fails gracefully
     if os.path.exists(identitypath):
       self.server_identity = RNS.Identity.from_file(identitypath)
