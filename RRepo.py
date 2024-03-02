@@ -37,7 +37,7 @@ class Repository:
       
     else:
       self.apppath = os.path.expanduser("~")+"/.RRepo"
-      RNS.log("Path is None, defaulting to "+ self.appath)
+      RNS.log("Path is None, defaulting to "+ self.apppath)
     
       
     self.repopath = os.path.join(self.apppath,"firmware")
