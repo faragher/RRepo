@@ -3,8 +3,11 @@ The library is incredibly rough, but I expect the actual interface to be general
 The example is straightforward, but general specifications follow:
 
 Client Initialization:
+
 `Initialize Reticulum and create an identity as per normal.`
+
 `Downloader = RRepo.FirmwareDownloader(destination_hexhash) # bytes or string acceptable`
+
 `Downloader.Connect() # Initializes link with repositorty`
 
 Commands
